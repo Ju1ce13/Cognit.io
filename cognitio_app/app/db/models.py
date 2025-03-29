@@ -31,7 +31,7 @@ class Student(Base):
     # Связи
     city = relationship("City", back_populates="students")
     technologies = relationship("Technology", secondary=student_technology, back_populates="students")
-    hobbies = relationship("Hobby", secondary=student_hobby, back_populates="students")
+    # hobbies = relationship("Hobby", secondary=student_hobby, back_populates="students")
     sent_likes = relationship("Like", foreign_keys="Like.sender_id", back_populates="sender")
     received_likes = relationship("Like", foreign_keys="Like.receiver_id", back_populates="receiver")
     matches1 = relationship("Match", foreign_keys="Match.student1_id", back_populates="student1")
@@ -47,11 +47,11 @@ class Technology(Base):
     students = relationship("Student", secondary=student_technology, back_populates="technologies")
 
 
-class Hobby(Base):
-    __tablename__ = "hobby"
-    hobby_id = Column(Integer, primary_key=True)
-    hobby_name = Column(String(50), unique=True)
-    students = relationship("Student", secondary=student_hobby, back_populates="hobbies")
+# class Hobby(Base):
+#     __tablename__ = "hobby"
+#     hobby_id = Column(Integer, primary_key=True)
+#     hobby_name = Column(String(50), unique=True)
+#     students = relationship("Student", secondary=student_hobby, back_populates="hobbies")
 
 
 class City(Base):
