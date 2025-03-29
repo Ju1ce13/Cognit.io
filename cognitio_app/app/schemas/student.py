@@ -2,9 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
 
-
-class TechnologyBase(BaseModel):
-    name: str
+from app.schemas.technology import TechnologyBase
 
 
 class StudentBase(BaseModel):
